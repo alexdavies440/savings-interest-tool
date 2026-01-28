@@ -1,0 +1,1 @@
+Simple interest calculator for annual interest with a balance that changes each month, for example calculating the annual interest on an account that you add £400 per month in. Since the interest is calculated daily but paid annually, it can get complicated when the balance changes each month. 
