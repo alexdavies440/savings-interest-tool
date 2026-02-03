@@ -1,26 +1,26 @@
 window.addEventListener("load", function () {
 
-    let form = document.querySelector("form");
 
     function Entry(month, balance, monthlyInterest, interestBalance) {
         this.month = month,
-        this.balance = balance,
-        this.monthlyInterest = monthlyInterest,
-        this.interestBalance = interestBalance
+            this.balance = balance,
+            this.monthlyInterest = monthlyInterest,
+            this.interestBalance = interestBalance
     }
 
     document.addEventListener("submit", function (event) {
-        
+
         let dataArray = [];
         let balance = 0;
         let interestRate = 0;
         let montlyContribution = 0;
         let interestBalance = 0;
-        
+
 
         balance = Number(document.querySelector("input[name=balance]").value);
         interestRate = Number(document.querySelector("input[name=rate]").value) / 100;
         montlyContribution = Number(document.querySelector("input[name=contribution]").value);
+
 
         for (let i = 1; i <= 12; i++) {
 
@@ -41,12 +41,34 @@ window.addEventListener("load", function () {
 
             // console.log();
 
+
             let data = new Entry(i, balance, monthlyInterest, interestBalance);
+
+            let p = document.querySelector("p");
+
+            // add each interation to the original array until the 12 months are complete
             dataArray.push(data);
 
+            let list = "<ul>";
+
+            dataArray.forEach(function(item) {
+                list += "<li>"
+                list += "<ul>"
+                
+
+                list += "<li>Month: " + item.month + "</li>";
+                list += "<li>Balance: £" + item.balance + "</li>";
+                list += "<li>Monthly Interest: £" + item.monthlyInterest + "</li>";
+                list += "<li>Interest Balance: £" + item.interestBalance + "</li>";
+
+                list += "</ul><br>"
+            });
+            list += "</li>"
+            list += "<ul>"
+
+            p.innerHTML = list;
+
             balance += montlyContribution;
-
-
 
             if (i === 12) {
 
@@ -54,12 +76,11 @@ window.addEventListener("load", function () {
 
                 console.log("Final Balance: " + balance);
                 console.log(dataArray);
+                document.getElementById("finalBalance").innerHTML = "Final Balance: £" + balance;
 
             }
 
-            let p = document.querySelector("p");
-            p.innerHTML(dataArray);
-
+           
         }
         event.preventDefault();
     })
