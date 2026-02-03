@@ -79,10 +79,7 @@ window.addEventListener("load", function () {
                 console.log("Final Balance: " + balance);
                 console.log(dataArray);
                 document.getElementById("finalBalance").innerHTML = "Final Balance: £" + balance;
-
             }
-
-           
         }
         event.preventDefault();
     })
