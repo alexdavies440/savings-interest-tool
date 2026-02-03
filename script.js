@@ -15,14 +15,16 @@ window.addEventListener("load", function () {
         let interestRate = 0;
         let montlyContribution = 0;
         let interestBalance = 0;
+        let months = 0;
 
 
         balance = Number(document.querySelector("input[name=balance]").value);
         interestRate = Number(document.querySelector("input[name=rate]").value) / 100;
         montlyContribution = Number(document.querySelector("input[name=contribution]").value);
+        months = Number(document.querySelector("input[name=months]").value);
 
 
-        for (let i = 1; i <= 12; i++) {
+        for (let i = 1; i <= months; i++) {
 
 
             let monthlyInterest = (balance * interestRate) / 12;
@@ -70,7 +72,7 @@ window.addEventListener("load", function () {
 
             balance += montlyContribution;
 
-            if (i === 12) {
+            if (i === months) {
 
                 balance += interestBalance;
 
